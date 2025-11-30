@@ -1,5 +1,14 @@
 *
-!*.tex
-!*.bib
-!*.png
+!tex/
+!bib/
+!asset/
+!pdf/
+
+!tex/*.tex
+!bib/*.bib
+!asset/*.png
+!pdf/*.pdf
+
+!LICENSE
+!README.md
 *unsafe*

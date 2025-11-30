@@ -1,0 +1,107 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\thispagestyle{empty}
+\newgeometry{margin=0in}
+
+\begingroup
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\noindent
+
+\noindent
+\SetHorizontalCoffin\MainBand{%
+  \begin{tikzpicture}
+    \fill[white] (0,0) rectangle (\MainBandWidth,-\paperheight);
+  \end{tikzpicture}%
+}
+
+\SetHorizontalCoffin\RightBand{%
+  \begin{tikzpicture}
+    % \fill[\RightBandColorCode] (0,0) rectangle (\RightBandWidth,-\paperheight);
+    \fill[rust] (0,0) rectangle (\RightBandWidth,-\paperheight);
+  \end{tikzpicture}%
+}
+
+\SetHorizontalCoffin\MainText{%
+  \begin{minipage}[t][\TextHeight][c]{\MainTextWidth}
+    \color{alligatorlight}
+    \centering
+    % \vspace*{\fill}
+    \vspace{0in}
+
+    {\CoverTitle}
+
+    \vspace{\fill}
+    {\CoverLogo}
+    
+    \vspace{\fill}
+    {\CoverSubTitle}
+
+    % \vspace{\fill}
+  \end{minipage}%
+}
+
+\SetHorizontalCoffin\RightText{%
+  \begin{minipage}[t][\TextHeight][c]{\MainTextWidth}
+    \color{white}
+    %\color{forest}
+    %\color{beige}
+    \centering
+    \huge
+    \raggedright
+    \vspace{0in}
+    
+    \textbf{\ClubStatusName{admin}}\\
+    Erwann
+    
+    \vspace{\fill}
+    
+    \textbf{\ClubStatusName{aspirant}}\\
+    Anne\\
+    Jen
+    
+    \vspace{\fill}
+    
+    \textbf{\ClubStatusName{confirmed}}
+    
+    \vspace{\fill}
+    
+    \textbf{\ClubStatusName{donor}}
+
+    \vspace{\fill}
+    
+  \end{minipage}%
+}
+
+\SetHorizontalCoffin\MainBottomMargin{%
+  \begin{minipage}[t][\VerticalMargin][c]{\MainTextWidth}
+    \color{alligatorlight}
+    \centering
+    \tiny
+    \URLmeetup \quad $\cdot$ \quad \URLgithub \quad $\cdot$ \quad \URLgofundme
+  \end{minipage}%
+}
+
+\SetHorizontalCoffin\FullPageCoffin{}
+% Join the bands
+\JoinCoffins\FullPageCoffin\MainBand
+\JoinCoffins\FullPageCoffin[\MainBand-r,\MainBand-t]\RightBand[l,t]
+% Join the text on top of the bands with margins
+\JoinCoffins\FullPageCoffin[\MainBand-l,\MainBand-t]\MainText[l,t](\HorizontalMarginMain,-\VerticalMargin)
+\JoinCoffins\FullPageCoffin[\RightBand-l,\RightBand-t]\RightText[l,t](\HorizontalMarginRight,-\VerticalMargin)
+\JoinCoffins\FullPageCoffin[\MainText-l,\MainText-b]\MainBottomMargin[l,t](0pt,0pt)
+
+\TypesetCoffin\FullPageCoffin
+
+\endgroup

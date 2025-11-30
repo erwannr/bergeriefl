@@ -1,0 +1,122 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+% \documentclass[letterpaper]{report}
+\documentclass[letterpaper]{report}
+
+\usepackage[english,french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[autostyle=true]{csquotes}
+\usepackage[bibencoding=auto, sorting=ynt, style=numeric]{biblatex}
+\usepackage[inline]{enumitem}
+\usepackage{anyfontsize}
+\usepackage{chngcntr}
+\usepackage{datatool}
+\usepackage{datetime2}
+\usepackage{enotez}
+\usepackage{fancyhdr} % headfoot
+\usepackage{fontawesome5}
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{lastpage} % headfoot
+\usepackage{lettrine} %
+\usepackage{listings}
+\usepackage{pbsi}
+\usepackage{tcolorbox}
+\usepackage{titlesec} % \titleformat
+\usepackage{xcoffins} % cover
+\usepackage{xcolor}
+\usepackage{xsim}
+\usepackage{hyperref}
+
+% \input{../tex/shared-enotez.tex} % local
+% \input{../tex/shared-french.tex} % local
+\input{../tex/shared-inlitemize.tex}
+\input{../tex/shared-provide.tex}
+\input{../tex/shared-quotestyle.tex}
+
+\input{../tex/preamble-color.tex}
+
+\input{../tex/preamble-geometry.tex}
+\savegeometry{default}
+
+\input{../tex/preamble-abstract.tex}
+\input{../tex/preamble-back.tex}
+\input{../tex/preamble-club.tex}
+\input{../tex/preamble-corpus.tex}
+\input{../tex/preamble-enotez.tex}
+\input{../tex/preamble-french.tex}
+
+\input{../tex/preamble-headfoot.tex}
+\input{../tex/preamble-info.tex}
+\input{../tex/preamble-latex3.tex}
+\input{../tex/preamble-listings.tex}
+\input{../tex/preamble-numbering.tex}
+\input{../tex/preamble-studyaid.tex}
+\input{../tex/preamble-title.tex}
+\input{../tex/preamble-text.tex}
+\input{../tex/preamble-xsim.tex}
+
+\input{../tex/preamble-cover.tex}
+
+% \geometry{showframe} % temporary
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor=rust,
+  urlbordercolor=rust,
+  citebordercolor=rust
+}
+\tcbuselibrary{most}
+\addbibresource{../bib/french.bib}
+\addbibresource{../bib/howtocite.bib}
+\pagestyle{rest}
+
+\input{../tex/corpus-author.tex}
+\input{../tex/corpus-keyword.tex}
+\input{../tex/corpus-publication.tex}
+\input{../tex/corpus-quote.tex}
+
+\input{../tex/club-member.tex}
+\input{../tex/club-read.tex}
+\input{../tex/club-journal.tex}
+\input{../tex/club-status.tex}
+
+\input{../tex/studyaid-lerouge.tex}
+\StudyAidNew{lerouge}
+
+\begin{document}
+
+\input{../tex/document-cover}
+\newpage
+\loadgeometry{default}
+
+\TextColor
+
+\input{../tex/document-abstract.tex}
+
+\tableofcontents
+\listoffigures
+
+\input{../tex/document-intro.tex}
+
+\input{../tex/document-corpus.tex}
+
+\input{../tex/document-club.tex}
+
+\input{../tex/document-studyaid.tex}
+
+\input{../tex/document-other.tex}
+
+\input{../tex/document-back.tex}
+
+\end{document}

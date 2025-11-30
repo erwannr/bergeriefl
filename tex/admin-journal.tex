@@ -1,0 +1,36 @@
+\DTLnewdb{admin-journal}
+
+\DTLnewrow{admin-journal}
+\DTLnewdbentry{admin-journal}{id}{2025-11-29-bookmarks}
+\DTLnewdbentry{admin-journal}{date}{2025-11-29}
+\DTLnewdbentry{admin-journal}{title}{Bug report}
+\DTLnewdbentry{admin-journal}{description}{Faulty bookmarks hierarchy under part:other}
+\DTLnewdbentry{admin-journal}{details}{}
+\DTLnewdbentry{admin-journal}{status}{pending}
+\DTLnewdbentry{admin-journal}{fix}{}
+
+\DTLnewrow{admin-journal}
+\DTLnewdbentry{admin-journal}{id}{2025-11-29-multilingual}
+\DTLnewdbentry{admin-journal}{date}{2025-11-29}
+\DTLnewdbentry{admin-journal}{title}{Feature request}
+\DTLnewdbentry{admin-journal}{description}{Generate this document in French and English}
+\DTLnewdbentry{admin-journal}{details}{}
+\DTLnewdbentry{admin-journal}{status}{pending}
+\DTLnewdbentry{admin-journal}{fix}{}
+
+\DTLnewrow{admin-journal}
+\DTLnewdbentry{admin-journal}{id}{2025-11-29-headheight}
+\DTLnewdbentry{admin-journal}{date}{2025-11-29}
+\DTLnewdbentry{admin-journal}{title}{Feature request}
+\DTLnewdbentry{admin-journal}{description}{Headhight warning}
+\ExplSyntaxOn
+\DTLnewdbentry{admin-journal}{details}{\tl_to_str:n{
+    Package fancyhdr Warning: \headheight is too small (12.0pt): 
+    (fancyhdr)                Make it at least 14.39998pt, for example:
+    (fancyhdr)                \setlength{\headheight}{14.39998pt}.
+    (fancyhdr)                You might also make \topmargin smaller:
+    (fancyhdr)                \addtolength{\topmargin}{-2.39998pt}.
+  }}
+\ExplSyntaxOff
+\DTLnewdbentry{admin-journal}{status}{closed}
+\DTLnewdbentry{admin-journal}{fix}{Workaround: added field bookmark to club-journal and put in it only the publ-id}

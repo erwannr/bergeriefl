@@ -1,0 +1,57 @@
+\newpage
+\pagestyle{empty}
+\newgeometry{margin=0in}
+
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\SetHorizontalCoffin\BackPageBgCoffin{%
+  \begin{tikzpicture}
+    \node[inner sep=0pt] at (0.5\paperwidth,-0.5\paperheight) {%
+      \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{\BergerMoonPath}%
+    };    
+  \end{tikzpicture}%
+}
+
+\SetHorizontalCoffin\BackQuoteCoffin{%
+  \begin{tikzpicture}
+    \node[
+    anchor=north west,
+    text width=\BackQuoteWidth,  % use precomputed length
+    align=right
+    ] at (0,0) {%
+      \bsifamily
+      \Huge
+      \color{nightrust}
+      Dans la lecture, c'est l'assimilation qui compte; et, même, l'usage qu'on en fait.
+
+      \par\medskip\raggedleft{}--- Jean-Noé, \enquote{berger érudit} (INA, 1967)
+    };
+  \end{tikzpicture}%
+}
+
+\SetHorizontalCoffin\BackQRCoffin{%
+  \BackQR
+}
+
+\SetHorizontalCoffin\BackURLCoffin{%
+  \begin{minipage}{3in}
+    \raggedleft
+    \color{nightrust}
+    \tiny
+    \URLmeetup\\
+    \URLgithub
+  \end{minipage}%
+}
+
+\SetHorizontalCoffin\BackPageFullCoffin{}
+\JoinCoffins\BackPageFullCoffin\BackPageBgCoffin
+% \JoinCoffins\BackPageFullCoffin[\BackPageBgCoffin-l,\BackPageBgCoffin-b]\BackQRCoffin[l,b](0.25in,0.25in)
+\JoinCoffins\BackPageFullCoffin[\BackPageBgCoffin-l,\BackPageBgCoffin-b]\BackQRCoffin[l,b](0in,0.35in)
+\JoinCoffins\BackPageFullCoffin[\BackPageBgCoffin-r,\BackPageBgCoffin-t]\BackQuoteCoffin[r,t](-0.5in,-1in)
+\JoinCoffins\BackPageFullCoffin[\BackPageBgCoffin-r,\BackPageBgCoffin-b]\BackURLCoffin[r,b](-0.5in,0.35in)
+
+\TypesetCoffin\BackPageFullCoffin
+
+\endgroup

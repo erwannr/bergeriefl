@@ -1,0 +1,44 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\ProvideDocumentCommand{\XSIMexerciseName}{}{Question}
+\ProvideDocumentCommand{\XSIMsolutionName}{}{Réponse}
+\ProvideDocumentCommand{\XSIMformat}{m}{\subsection*{#1}}
+
+\DeclareExerciseEnvironmentTemplate{nopoints}{%
+  {%
+    \XSIMformat{
+      \IfInsideSolutionTF{%
+        % Answer heading with hyperlink
+        \hypertarget{answer:\ExerciseID}{}%
+        \hyperlink{question:\ExerciseID}{\GetExerciseName\ \GetExerciseProperty{counter}}%
+      }{%
+        % Question heading with link to answer
+        \hypertarget{question:\ExerciseID}{}%
+        \GetExerciseName\ \GetExerciseProperty{counter}%
+        \quad{\small\hyperlink{answer:\ExerciseID}{(→\XSIMsolutionName)}}%
+      }%
+    }
+  }%
+}{\par}
+
+\ProvideDocumentCommand{\QuestionAnswerNew}{m}
+{%
+  \DeclareExerciseType{#1}{
+    exercise-env = q-#1,
+    solution-env = a-#1,
+    exercise-name = \XSIMexerciseName,
+    solution-name = \XSIMsolutionName,
+    exercise-template = nopoints,
+    solution-template = nopoints
+  }
+}

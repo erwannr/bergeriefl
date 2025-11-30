@@ -1,0 +1,41 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\ExplSyntaxOn
+
+\dim_new:N \g__erw_abstract_width_dim
+\dim_set:Nn \g__erw_abstract_width_dim { 0.666\textwidth }
+
+\cs_new_protected:Nn \__erw_abstract_typeset:nn
+{
+  \par\vspace*{1em}
+  {\bfseries #1}
+  \par\vspace{0.5em}
+  \begin{minipage}{\dim_use:N \g__erw_abstract_width_dim}
+    #2
+  \end{minipage}
+  \par\vspace{2em}
+}
+
+\ProvideDocumentEnvironment{AbstractFR}{+b}
+{
+  \__erw_abstract_typeset:nn {Résumé} {#1}
+}
+{}
+
+\ProvideDocumentEnvironment{AbstractEN}{+b}
+{
+  \__erw_abstract_typeset:nn {Abstract} {#1}
+}
+{}
+
+\ExplSyntaxOff

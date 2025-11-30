@@ -1,0 +1,24 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\ExplSyntaxOn
+\cs_new_protected:Nn
+\__erw_format_list:nN
+{%
+  \begin{inlitemize}
+    \clist_map_inline:nn {#1} {%
+    \item #2{##1}%
+    }%
+  \end{inlitemize}%
+}
+\cs_generate_variant:Nn\__erw_format_list:nN{e,f,x}
+\ExplSyntaxOff

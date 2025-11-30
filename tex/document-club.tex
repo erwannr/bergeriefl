@@ -1,0 +1,36 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+% Add to preamble:
+% \input{../tex/club-member.tex}
+% \input{../tex/club-read.tex}
+% \input{../tex/club-journal.tex}
+
+\part{Cahier de compagnonnage}
+\label{part:club}
+
+\chapter{Journal}
+\label{club:journal}
+\ClubJournalTypeset{2025-04-04}
+\ClubJournalTypeset{2025-07-29}
+\ClubJournalTypeset{2025-10-30}
+\ClubJournalTypeset{2025-11-12}
+
+\chapter{Membre}
+\label{club:member}
+\DTLsort{id}{club-member}
+\DTLforeach{club-member}{\id=id,\mname=name,\murl=url,\joined=joined}{%
+  \section{\mname}\label{club:member:\id}
+  \noindent\textbf{URL:} \url{\murl}\\
+  \noindent\textbf{Depuis:} \DTMdate{\joined}\\
+  \par%\bigskip
+}

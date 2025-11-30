@@ -1,0 +1,44 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\ProvideDocumentCommand{\TitleLabelColor}{}{\color{nightrust}}
+\ProvideDocumentCommand{\TitleTextColor}{}{\color{rust}}
+
+\titleformat{\part}[display]
+{\normalfont\huge\bfseries\TitleLabelColor}
+{\partname~\thepart}
+{20pt}
+{\Huge\color{alligatorlight}}
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\TitleLabelColor}
+{\chaptertitlename~\thechapter}
+{20pt}
+{\Huge\color{alligatorlight}}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{alligatorlight}}
+{\thesection}
+{1em}
+{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{alligatorlight}}
+{\thesubsection}
+{1em}
+{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries\color{alligatorlight}}
+{\thesubsubsection}
+{1em}
+{}

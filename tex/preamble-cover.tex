@@ -1,0 +1,62 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+% {32}{38} {36}{42} {48}{56} % {60}{72}
+\ProvideDocumentCommand{\CoverTitle}{}{\fontsize{48}{56}\selectfont\bfseries{}
+  % \lettrine{L}{e}\ % overdone
+  Le manuscrit du cercle}
+\ProvideDocumentCommand{\CoverSubTitle}{}{\fontsize{36}{42}\selectfont\bfseries{}Année~2025}
+\ProvideDocumentCommand{\CoverLogo}{}{\includegraphics[width=2.5in,trim=30 30 30 30,clip]{\LogoPath}}
+\ProvideDocumentCommand{\RightBandColorCode}{}{rust} % beige
+
+% Create coffins for bands and text
+\NewCoffin\MainBottomMargin
+\NewCoffin\MainBand
+\NewCoffin\RightBand
+\NewCoffin\MainText
+\NewCoffin\RightText
+\NewCoffin\FullPageCoffin
+
+\ExplSyntaxOn
+\fp_new:N \g_cover_main_band_ratio_fp
+\fp_new:N \g_cover_right_band_ratio_fp
+\fp_gset:Nn \g_cover_main_band_ratio_fp { 0.667 }  % Changed from 0.633
+\fp_gset:Nn \g_cover_right_band_ratio_fp {  1.0 - \g_cover_main_band_ratio_fp }
+
+% Margins
+\dim_new:N \g_cover_vertical_margin_dim
+\dim_new:N \g_cover_horizontal_margin_main_dim
+\dim_new:N \g_cover_horizontal_margin_right_dim
+\dim_gset:Nn \g_cover_vertical_margin_dim { 1in }
+\dim_gset:Nn \g_cover_horizontal_margin_main_dim { 0.5in }
+\dim_gset:Nn \g_cover_horizontal_margin_right_dim { 0.25in }
+
+% Computed dimensions
+\dim_new:N \g_cover_main_band_width_dim
+\dim_new:N \g_cover_right_band_width_dim
+\dim_new:N \g_cover_text_height_dim
+\dim_new:N \g_cover_main_text_width_dim
+
+\dim_gset:Nn \g_cover_main_band_width_dim { \fp_use:N \g_cover_main_band_ratio_fp \paperwidth }
+\dim_gset:Nn \g_cover_right_band_width_dim { \fp_use:N \g_cover_right_band_ratio_fp \paperwidth }
+\dim_gset:Nn \g_cover_text_height_dim { \paperheight - 2\g_cover_vertical_margin_dim }
+\dim_gset:Nn \g_cover_main_text_width_dim { \g_cover_main_band_width_dim - 2\g_cover_horizontal_margin_main_dim }
+
+% Make dimensions available in document body
+\cs_new:Npn \MainBandWidth { \dim_use:N \g_cover_main_band_width_dim }
+\cs_new:Npn \RightBandWidth { \dim_use:N \g_cover_right_band_width_dim }
+\cs_new:Npn \TextHeight { \dim_use:N \g_cover_text_height_dim }
+\cs_new:Npn \MainTextWidth { \dim_use:N \g_cover_main_text_width_dim }
+\cs_new:Npn \VerticalMargin { \dim_use:N \g_cover_vertical_margin_dim }
+\cs_new:Npn \HorizontalMarginMain { \dim_use:N \g_cover_horizontal_margin_main_dim }
+\cs_new:Npn \HorizontalMarginRight { \dim_use:N \g_cover_horizontal_margin_right_dim }
+\ExplSyntaxOff

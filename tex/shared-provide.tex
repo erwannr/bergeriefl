@@ -1,0 +1,34 @@
+\ProvideDocumentCommand{\Elide}{sO{\IfBooleanT{#1}{\ldots}}m}{[#2]}
+
+\ProvideDocumentCommand{\AttributeQuote}{m}{
+  \par\medskip\raggedleft--- #1
+}
+
+\ProvideDocumentCommand{\ISOdate}{O{\today}}{#1}
+
+\ExplSyntaxOn
+% Declare title, author, date token lists
+\tl_new:N \g__erw_title_tl
+\tl_new:N \g__erw_author_tl
+\tl_new:N \g__erw_date_tl
+
+% Commands to set them (like \title, \author, \date)
+\ProvideDocumentCommand{\Title}{m}{\tl_gset:Nn \g__erw_title_tl {#1}}
+\ProvideDocumentCommand{\Author}{m}{\tl_gset:Nn \g__erw_author_tl {#1}}
+\ProvideDocumentCommand{\Date}{m}{\tl_gset:Nn \g__erw_date_tl {#1}}
+
+% Redefine \maketitle in LaTeX3 style
+\ProvideDocumentCommand\MakeTitle{}
+{
+  \begin{titlepage}
+    \centering
+    \vspace*{\fill}
+    {\Huge \bfseries \tl_use:N \g__erw_title_tl}\\
+    \vspace*{\fill}
+    {\tl_use:N \g__erw_author_tl}\\
+    \vspace*{\fill}
+    {\Large \bfseries \tl_use:N \g__erw_date_tl}
+    \vspace{\fill}
+  \end{titlepage}
+}
+\ExplSyntaxOff

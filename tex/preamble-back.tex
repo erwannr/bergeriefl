@@ -1,0 +1,25 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\NewCoffin\BackPageBgCoffin
+\NewCoffin\BackQRCoffin
+\NewCoffin\BackPageFullCoffin
+\NewCoffin\BackQuoteCoffin
+\NewCoffin\BackURLCoffin
+
+\ExplSyntaxOn
+\dim_new:N \g__back_quote_width_dim
+\dim_set:Nn \g__back_quote_width_dim { 0.633\paperwidth }
+\ProvideDocumentCommand{\BackQuoteWidth}{}{\g__back_quote_width_dim}
+\ExplSyntaxOff
+
+\ProvideDocumentCommand{\BackQR}{}{\includegraphics[width=2.5in,trim=15 15 15 15,clip]{\QRgofundmePath}}

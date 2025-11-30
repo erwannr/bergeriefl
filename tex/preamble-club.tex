@@ -1,0 +1,87 @@
+\ExplSyntaxOn
+% \newlist{publentry}{description}{1}
+% \setlist[publentry]{font=\bfseries}
+\ProvideDocumentCommand{\CorpusPublicationTypeset}{m}{%
+  \DTLforeach[\DTLiseq{\publid}{#1}]{corpus-publication}{%
+    \publid=id,
+    \name=name,
+    \authorid=authorid,
+    \keywordsid=keyword-id-clist,
+    \source=source,
+    \readid=read-id,
+    \summary=summary
+  }{%
+    \section{\name}\label{corpus:publ:\publid}
+    % \begin{publentry}
+    \begin{description}
+    \item[Auteur]~\CorpusAuthorName*{\authorid}
+    \item[Mots~clés]~\__erw_format_list:eN\keywordsid\CorpusKeywordName
+    \item[Source]~\source
+    \item[Statut]~\ClubReadName*{\readid}
+      % \DTLifnull{\summary}{}{%
+    \item[Résumé]~\summary
+      % }%
+    \end{description}
+    % \end{publentry}
+  }%
+}
+\ExplSyntaxOff
+
+\ProvideDocumentCommand{\ClubMemberName}{s m}{%
+  \DTLforeach[\DTLiseq{\id}{#2}]{club-member}{\id=id,\name=name}{%
+    \IfBooleanTF{#1}
+    {\name}%
+    {\hyperref[club:member:\id]{\name}}%
+  }
+}
+
+\ProvideDocumentCommand{\ClubReadName}{s m}{%
+  \DTLforeach[\DTLiseq{\id}{#2}]{club-read}{\id=id,\name=name}{%
+    \IfBooleanTF{#1}
+    {\name}%
+    {\hyperref[club:read:\id]{\name}}%
+  }
+}
+
+\ExplSyntaxOn
+\ProvideDocumentCommand{\ClubJournalTypeset}{m}{%
+  \DTLforeach[\DTLiseq{\date}{#1}]{club-journal}{%
+    \date=date,
+    \title=title,
+    \bookmark=bookmark,
+    \partiesid=party-id-clist,
+    \thisurl=url,
+    \details=details
+  }{%
+    \section{\texorpdfstring{\DTMdate{\date}\ :~\title}{\date\ : \bookmark}}\label{club:journal:\date}
+    \noindent\textbf{Web:}~\url{\thisurl}\\
+    \noindent\textbf{Participants:}~\__erw_format_list:eN{\partiesid}\ClubMemberName\\
+    \noindent\textbf{Détail:}~\details
+  }
+}
+\ExplSyntaxOff
+
+\ProvideDocumentCommand{\ClubStatusName}{m}
+{%
+  \DTLforeach[\DTLiseq{\statusid}{#1}]{club-status}{%
+    \statusid=id,%
+    \statusname=name%
+  }{%
+    \statusname
+  }%
+}
+
+\ExplSyntaxOn
+\ProvideDocumentCommand{\ClubStatusList}{m}{%
+  \begin{itemize}[label={}, leftmargin=0pt, nosep]
+    \DTLforeach{club-member}{%
+      \mstatusid=status-id-clist,%
+      \mid=id%
+    }{%
+      \exp_args:Ne\clist_if_in:nnTF {\mstatusid} {#1}
+      {\item \ClubMemberName{\mid}}
+      {}%
+    }%
+  \end{itemize}%
+}
+\ExplSyntaxOff

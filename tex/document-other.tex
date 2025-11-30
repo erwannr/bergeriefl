@@ -1,0 +1,66 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+\part{Autre}
+\label{part:other}
+
+\section{Propriété intellectuelle}
+\label{other:pi}
+
+\subsection*{La nôtre}
+S'applique au contenu écrit→\URLlicense{}; pour le code, la licence est, le cas échéant, spécifiée dans le code lui-même.
+
+\subsection*{Des autres}
+S'agissant des œuvres toujours protégées par le droit d'auteur\cite{droitsdauteur}, seule la reproduction d'extraits limités est prévue, le cas échéant.
+
+\section{Citer ce document}
+\label{other:howtocite}
+
+\subsection*{Format académique}
+
+\subsubsection*{Dans le fichier \texttt{.bib}}
+
+\noindent\lstinputlisting[language=TeX]{../bib/howtocite.bib}
+
+\subsubsection*{Dans le texte}
+
+\noindent Tel qu'affiché ici→\cite{cerclefl2025-11-29}.
+
+\subsection*{Format simple}
+\noindent \URLgithub
+
+\section{Réplication}
+\label{other:replicate}
+
+\subsection*{Du code}
+\begin{lstlisting}[language=bash]
+  git clone https://github.com/erwannr/cerclefl.git
+\end{lstlisting}
+
+\subsection*{Du document}
+\begin{lstlisting}[language=bash]
+  cd ./pdf
+  latexmk -pdf -verbose ../tex/assemble.tex
+\end{lstlisting}
+
+\printendnotes[chapter]
+
+\section{Bibliographie}
+\label{other:reference}
+\printbibliography[heading=none, notkeyword=nonexistent]
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.95\textwidth]{\DarcosXIXPath}
+  \caption{Grandes dates littéraires du XIXe\cite{darcos1986}}
+  \label{fig:darcos-xix}
+\end{figure}

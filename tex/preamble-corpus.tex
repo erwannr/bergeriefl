@@ -1,0 +1,57 @@
+% -----------------------------------------------------------------
+% Copyright (C) 2025 by Le cercle floridien (Erwann Rogard)
+% Source repository: https://github.com/erwannr/cerclefl
+% 
+% LaTeX code:
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+% 
+% Written content (text):
+% CC BY-NC-SA 4.0
+% -----------------------------------------------------------------
+
+%  \ProvideExpandableDocumentCommand{\CorpusPublicationName}{s m}{% Error!
+\ProvideDocumentCommand{\CorpusPublicationName}{s m}{%
+    \DTLforeach[\DTLiseq{\id}{#2}]{corpus-publication}{\id=id,\name=name}{%
+      \IfBooleanTF{#1}
+      {\name}%
+      {\hyperref[corpus:publ:\id]{\name}}%
+    }
+  }
+
+\ProvideDocumentCommand{\CorpusAuthorName}{s m}{%
+  \DTLforeach[\DTLiseq{\id}{#2}]{corpus-author}{\id=id,\name=name}{%
+    \IfBooleanTF{#1}
+    {\name}%
+    {\hyperref[corpus:author:\id]{\name}}%
+  }
+}
+
+\ProvideDocumentCommand{\CorpusKeywordName}{s m}{%
+  \DTLforeach[\DTLiseq{\id}{#2}]{corpus-keyword}{\id=id,\name=name}{%
+    \IfBooleanTF{#1}
+    {\name}%
+    {\name
+      % \hyperref[corpus:keyword:\id]{\name} % disabled until section is created
+    }%
+  }
+}
+
+\ProvideDocumentCommand{\CorpusQuoteTypeset}{m}
+{%
+  \DTLforeach[\DTLiseq{\qid}{#1}]{corpus-quote}{%
+    \qid=id,
+    \qtext=text,
+    \qauthorid=authorid,
+    \qsource=source
+  }{%
+    \begin{tcolorbox}[quotestyle]
+      \qtext
+      \DTLifnull{\qsource}{%
+        \AttributeQuote{\CorpusAuthorName*{\qauthorid}}%
+      }{%
+        \AttributeQuote{\CorpusAuthorName*{\qauthorid}\qsource}%
+      }%
+    \end{tcolorbox}
+  }
+}
