@@ -19,4 +19,4 @@ Sometimes [pdf don't render on github](https://github.com/orgs/community/discuss
 ![Front cover](./preview/assemble-0.png)
 ![TOC](./preview/assemble-2.png)
 ![TOC](./preview/assemble-3.png)
-![Back cover](./preview/assemble-22.png)
+![Back cover](./preview/assemble-25.png)
